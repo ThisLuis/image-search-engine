@@ -1,9 +1,11 @@
 const results = document.querySelector('#results');
 const form = document.querySelector('#form');
+const pagination = document.querySelector('#pagination')
 
 const resultsPerPage = 40;
 let totalPages;
 let iterator;
+let actualPage = 1;
 
 window.onload = () => {
     form.addEventListener('submit', validateForm );
@@ -19,12 +21,14 @@ function validateForm( e ) {
         return;
     }
 
-    searchImages( txtSearch );
+    searchImages();
 }
 
-function searchImages( searchTerm ) {
+function searchImages() {
+
+    const searchTerm = document.querySelector('#txtSearch').value;
     const apikey = '18728587-0d3aabaa665486f32883962f6';
-    const url = `https://pixabay.com/api/?key=${ apikey }&q=${ searchTerm }&per_page=100`;
+    const url = `https://pixabay.com/api/?key=${ apikey }&q=${ searchTerm }&per_page=${ resultsPerPage }&page=${ actualPage }`;
     
     fetch( url )
         .then( resp => resp.json())
@@ -70,12 +74,36 @@ function showImages( { hits } ) {
         `;
     });
 
+    // Limpiar paginador previo
+    while( pagination.firstChild) {
+        pagination.removeChild(pagination.firstChild)
+    }
+
+    // Generamos el paginador
     showPager();
     
 }
 
 function showPager() {
     iterator = createPager( totalPages );
+
+    while( true ) {
+        const { value, done } = iterator.next();
+        if( done ) return;
+
+        const button = document.createElement('a');
+        button.href = "#";
+        button.dataset.page = value;
+        button.textContent = value;
+        button.classList.add('pagination');
+
+        button.onclick = () => {
+            actualPage = value;      
+            searchImages();  
+        }
+
+        pagination.appendChild( button );
+    }
 }
 
 function showAlert( message ) {
