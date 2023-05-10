@@ -1,6 +1,10 @@
 const results = document.querySelector('#results');
 const form = document.querySelector('#form');
 
+const resultsPerPage = 40;
+let totalPages;
+let iterator;
+
 window.onload = () => {
     form.addEventListener('submit', validateForm );
 }
@@ -25,9 +29,20 @@ function searchImages( searchTerm ) {
     fetch( url )
         .then( resp => resp.json())
         .then( result => {
+            totalPages = calculatePages( result.totalHits )
+            console.log( totalPages)
             showImages( result );
-            console.log(result)
         })
+}
+
+function *createPager( total ) {
+    for( let i = 1  ; i <= total; i++ ) {
+        yield i;
+    }
+}
+
+function calculatePages( total ) {
+    return parseInt(Math.ceil( total / resultsPerPage ));
 }
 
 function showImages( { hits } ) {
@@ -55,9 +70,12 @@ function showImages( { hits } ) {
         `;
     });
 
+    showPager();
     
+}
 
-    
+function showPager() {
+    iterator = createPager( totalPages );
 }
 
 function showAlert( message ) {
