@@ -13,7 +13,51 @@ function validateForm( e ) {
     if( txtSearch === '' ) {
         showAlert('Add search term');;
         return;
-    } 
+    }
+
+    searchImages( txtSearch );
+}
+
+function searchImages( searchTerm ) {
+    const apikey = '18728587-0d3aabaa665486f32883962f6';
+    const url = `https://pixabay.com/api/?key=${ apikey }&q=${ searchTerm }&per_page=100`;
+    
+    fetch( url )
+        .then( resp => resp.json())
+        .then( result => {
+            showImages( result );
+            console.log(result)
+        })
+}
+
+function showImages( { hits } ) {
+    console.log( hits );
+
+    while( results.firstChild ) {
+        results.removeChild(results.firstChild);
+    }
+
+    hits.forEach( image => {
+        const { previewURL, likes, views, largeImageURL } = image;
+        results.innerHTML += `
+        <div class="content">
+
+            <div class="image">
+                <img class="grid-gallery__image" src="${ previewURL }" />
+            </div>
+            <div class="info">
+                <p>${ likes } likes</p>
+                <p>${ views} views</p>
+                <a href="${ largeImageURL }" target="_blank" >View image full</a>
+            </div>
+           
+        </div>
+        `;
+    });
+
+    
+
+    
 }
 
 function showAlert( message ) {
