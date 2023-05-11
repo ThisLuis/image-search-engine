@@ -1,0 +1,155 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.like {
+    color: #1877f2;
+}
+
+.view {
+    color: #fd5c63
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    background-image: linear-gradient(to bottom, #6e14fb, #533efe, #3653fe, #1763fa, #0070f4);
+}
+
+.main {
+    /* border: 2px solid red; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+    
+}
+
+h1 {
+    font-family: 'Sigmar', cursive;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px #212121, 5px 4px 0px rgba(0,0,0,0.15);
+    letter-spacing: 2px;
+}
+
+button {
+    font-family: 'Sigmar', cursive;
+    background-color: #01cd74;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: .9rem 0;
+    font-size: 1.1rem;
+    text-shadow: 2px 2px 0px #212121, 5px 4px 0px rgba(0,0,0,0.15);
+    letter-spacing: 3px;
+}
+
+.form {
+    /* border: 1px solid green; */
+    padding: 10px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 400px;
+}
+
+#form input {
+    padding: .8rem;   
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Sigmar', cursive;
+    font-weight: 100;
+    font-size: 1.7rem;
+    border: none;
+    
+}
+
+
+#results {
+    margin-top: 60px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.content {
+    background-color: white;
+    border-radius: 5px;
+    border-radius: 2px;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image img{
+    /* border: 1px solid black; */
+    width: 280px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.info {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #212121;
+    padding: 10px;
+    gap: 10px;   
+}
+
+.content a {
+    text-decoration: none;
+    color: white;
+    background-color: #01cd74;
+    padding: 10px;
+    width: 260px;
+    /* border: 1px solid green; */
+    min-width: 70px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pagination {
+    padding: 15px;
+    margin: 40px 0 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 300px;
+    justify-content: center;
+}
+
+#pagination a {
+    font-style: normal;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px 8px;
+    color: #212121;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    width: 25px;
+    border-radius: 5px;
+}

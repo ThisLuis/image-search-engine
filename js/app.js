@@ -62,13 +62,30 @@ function showImages( { hits } ) {
         <div class="content">
 
             <div class="image">
-                <img class="grid-gallery__image" src="${ previewURL }" />
+                <img class="" src="${ previewURL }" />
             </div>
             <div class="info">
-                <p>${ likes } likes</p>
-                <p>${ views} views</p>
-                <a href="${ largeImageURL }" target="_blank" >View image full</a>
+
+                <p>
+                    <span class="like material-symbols-outlined">
+                        thumb_up
+                   </span>
+                </p>
+                <p>${ likes }</p>
+
+                <p>
+                    <span class="view material-symbols-outlined">
+                        visibility
+                    </span>
+                </p>
+                <p>${ views}</p>
+
             </div>
+            <a href="${ largeImageURL }" target="_blank" >
+                <span class="material-symbols-outlined">fullscreen</span>
+                View image full
+            </a>
+
            
         </div>
         `;
